@@ -1,19 +1,19 @@
 {
-  "name": "react-activity-tabs",
-  "version": "0.3.1",
+  "name": "@emmgfx/activity-tabs",
+  "version": "0.4.0",
   "description": "Tabs component using react activities",
   "keywords": [
     "react",
     "activity",
     "tabs"
   ],
-  "homepage": "https://github.com/emmgfx/react-activity-tabs#readme",
+  "homepage": "https://github.com/emmgfx/activity-tabs#readme",
   "bugs": {
-    "url": "https://github.com/emmgfx/react-activity-tabs/issues"
+    "url": "https://github.com/emmgfx/activity-tabs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emmgfx/react-activity-tabs.git"
+    "url": "git+https://github.com/emmgfx/activity-tabs.git"
   },
   "license": "MIT",
   "author": "Josep Viciana",
