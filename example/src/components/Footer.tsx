@@ -7,7 +7,7 @@ export const Footer = () => {
       <p className="text-center text-balance text-slate-700">
         &copy; 2026{" "}
         <Link
-          href="https://github.com/emmgfx/react-activity-tabs"
+          href="https://github.com/emmgfx/activity-tabs"
           className="text-nowrap underline"
           target="_blank"
           rel="noopener noreferrer"
