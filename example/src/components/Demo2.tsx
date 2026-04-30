@@ -26,8 +26,6 @@ export const demo2code1 = `
 `.trim();
 
 export const demo2code2 = `
-// Import and rename the components to avoid confusion with the default ones
-
 import {
   Tabs as RATabs,
   TabsList as RATabsList,
@@ -36,29 +34,28 @@ import {
   TabsPanel as RATabsPanel,
 } from "@emmgfx/activity-tabs";
 
-// Export your own components, with your own styles
-
 export const Tabs = (props: React.ComponentProps<typeof RATabs>) => (
-  <RATabs className="overflow-hidden rounded-2xl" {...props} />
+  <RATabs className="rounded-xl border border-(--color-border) overflow-hidden w-full max-w-sm" {...props} />
 );
+
 export const TabsList = (props: React.ComponentProps<typeof RATabsList>) => (
-  <RATabsList className="bg-purple-500 p-1 pb-0" {...props} />
+  <RATabsList className="flex border-b border-(--color-border)" {...props} />
 );
 
 export const TabsTab = (props: React.ComponentProps<typeof RATabsTab>) => (
   <RATabsTab
-    className="rounded-t-xl bg-purple-500 px-4 py-2 text-purple-100"
-    activeClassName="py-2 px-4 bg-purple-100 text-purple-800 rounded-t-xl"
+    className="flex-1 px-4 py-3 text-sm text-(--color-body) hover:text-(--color-heading) transition-colors"
+    activeClassName="flex-1 px-4 py-3 text-sm font-medium text-(--color-accent) border-b-2 border-(--color-accent) -mb-px"
     {...props}
   />
 );
 
 export const TabsPanels = (
   props: React.ComponentProps<typeof RATabsPanels>,
-) => <RATabsPanels className="bg-purple-500 p-1 pt-0" {...props} />;
+) => <RATabsPanels {...props} />;
 
 export const TabsPanel = (props: React.ComponentProps<typeof RATabsPanel>) => (
-  <RATabsPanel className="rounded-b-xl bg-purple-100 p-4" {...props} />
+  <RATabsPanel className="p-5" {...props} />
 );
 `.trim();
 
