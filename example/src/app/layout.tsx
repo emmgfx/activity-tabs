@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "activity-tabs — React tabs that preserve state",
   description:
-    "Headless React tabs component that keeps panel state alive when switching tabs, built on React Activity.",
+    "Headless tabs that keep panel state alive when switching.",
 };
 
 export default function RootLayout({

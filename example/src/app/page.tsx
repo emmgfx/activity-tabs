@@ -79,21 +79,12 @@ export default function Page() {
         <h1 className="text-7xl font-medium tracking-[-2px] text-(--color-heading) mt-2 max-sm:text-5xl">
           activity-<span className="text-(--color-accent)">tabs</span>
         </h1>
-        <p className="text-lg text-(--color-body) max-w-md text-center leading-relaxed">
-          Headless React tabs that{" "}
+        <p className="text-lg text-(--color-body) max-w-md text-center leading-relaxed text-balance">
+          Headless tabs that keep{" "}
           <span className="text-(--color-heading) font-medium">
-            preserve state
+            panel state alive
           </span>{" "}
-          when switching — built on React{" "}
-          <a
-            href="https://react.dev/reference/react/Activity"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-(--color-accent) border-b border-(--color-accent-border) hover:border-(--color-accent)"
-          >
-            Activity
-          </a>
-          .
+          when switching.
         </p>
         <div className="flex gap-3 mt-2 flex-wrap justify-center">
           <a
