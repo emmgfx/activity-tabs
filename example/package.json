@@ -12,27 +12,27 @@
   "dependencies": {
     "@emmgfx/activity-tabs": "^0.4.0",
     "bright": "^1.0.0",
-    "lucide-react": "^1.14.0",
-    "next": "16.1.7",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "tailwind-animations": "^1.0.1",
-    "tailwind-merge": "^3.4.0"
+    "lucide-react": "^1.56.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tailwind-animations": "^1.0.2",
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.14",
-    "@tailwindcss/postcss": "^4.1.18",
-    "@types/node": "^25.2.0",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
+    "@biomejs/biome": "2.5.15",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "babel-plugin-react-compiler": "1.0.0",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.18",
+    "prettier": "^3.9.10",
+    "prettier-plugin-tailwindcss": "^0.7.4",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
   },
   "overrides": {
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3"
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
   }
 }
