@@ -21,6 +21,7 @@ export const TabsTab: React.FC<TabsTabProps> = ({
   const isActive = activeTab === tabId;
   return (
     <button
+      type="button"
       className={isActive && activeClassName ? activeClassName : className}
       onClick={() => setActiveTab(tabId)}
     >
