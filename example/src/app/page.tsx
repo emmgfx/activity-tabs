@@ -6,6 +6,8 @@ import { Demo1, demo1code } from "@/components/Demo1";
 import { Demo2, demo2code1, demo2code2 } from "@/components/Demo2";
 import { Demo3 } from "@/components/Demo3";
 import { demo3code } from "@/components/Demo3Code";
+import { Demo4 } from "@/components/Demo4";
+import { demo4code } from "@/components/Demo4Code";
 import {
   CodeTabs,
   CodeTabsList,
@@ -49,19 +51,25 @@ const features = [
 const propsData = {
   Tabs: [
     { name: "initialActiveTab", type: "string | number", def: "undefined", desc: "Tab ID to activate on first render." },
+    { name: "activeTab", type: "string | number", def: "undefined", desc: "Active tab ID when you hold the state yourself (controlled)." },
+    { name: "onActiveTabChange", type: "(tabId) => void", def: "undefined", desc: "Called with the new tab ID whenever the active tab changes." },
     { name: "className", type: "string", def: "undefined", desc: "Class applied to the wrapper div." },
     { name: "children", type: "ReactNode", def: "—", desc: "Should contain TabsList and TabsPanels." },
+    { name: "...props", type: "div attributes", def: "—", desc: "id, ref, style, data-*, aria-*… passed to the wrapper div." },
   ],
   TabsTab: [
     { name: "tabId", type: "string | number", def: "—", desc: "Unique ID matching the TabsPanel to activate." },
     { name: "className", type: "string", def: "undefined", desc: "Class applied when the tab is inactive." },
     { name: "activeClassName", type: "string", def: "undefined", desc: "Class applied when the tab is active." },
+    { name: "onClick", type: "MouseEventHandler", def: "undefined", desc: "Runs before the tab is activated. Call event.preventDefault() to keep the current tab." },
     { name: "children", type: "ReactNode", def: "—", desc: "Tab label content." },
+    { name: "...props", type: "button attributes", def: "—", desc: "id, ref, style, data-*, aria-*… passed to the button." },
   ],
   TabsPanel: [
     { name: "tabId", type: "string | number", def: "—", desc: "ID of the tab that reveals this panel." },
     { name: "className", type: "string", def: "undefined", desc: "Class applied to the panel wrapper." },
     { name: "children", type: "ReactNode", def: "—", desc: "Panel content — stays mounted when inactive." },
+    { name: "...props", type: "div attributes", def: "—", desc: "id, ref, style, data-*, aria-*… passed to the panel div." },
   ],
 };
 
@@ -238,8 +246,8 @@ export default function Page() {
             </code>
           </h2>
           <p className="text-sm text-(--color-body)">
-            Use the hook inside any child component to read or set the active
-            tab from outside the tab buttons.
+            Use the hook in any component inside Tabs to read or set the
+            active tab, like these Prev / Next controls.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]">
@@ -247,6 +255,33 @@ export default function Page() {
             <Demo3 />
           </div>
           <CodeBlock>{demo3code}</CodeBlock>
+        </div>
+      </section>
+
+      {divider}
+
+      {/* Demo 4 — controlled tabs */}
+      <section className="text-left">
+        <div className="px-10 py-8 border-b border-(--color-border) max-sm:px-6">
+          <h2 className="text-2xl font-semibold tracking-tight text-(--color-heading) mb-1">
+            Controlled tabs
+          </h2>
+          <p className="text-sm text-(--color-body)">
+            Pass{" "}
+            <code className="font-mono text-(--color-heading)">activeTab</code>{" "}
+            and{" "}
+            <code className="font-mono text-(--color-heading)">
+              onActiveTabChange
+            </code>{" "}
+            to keep the active tab in your own state. Here it is synced with the
+            URL hash, so every tab has its own link.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]">
+          <div className="flex items-start justify-center p-10 border-b lg:border-b-0 lg:border-r border-(--color-border) max-sm:p-6 lg:sticky lg:top-0 lg:self-start">
+            <Demo4 />
+          </div>
+          <CodeBlock>{demo4code}</CodeBlock>
         </div>
       </section>
 
