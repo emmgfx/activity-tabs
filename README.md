@@ -48,6 +48,8 @@ Holds the active tab and renders a wrapper `div`.
 | Prop               | Type               | Default     | Description                                                   |
 | ------------------ | ------------------ | ----------- | ------------------------------------------------------------- |
 | `initialActiveTab` | `string \| number` | `undefined` | Tab to show first. Without it, no panel is visible until a tab is clicked. |
+| `activeTab`        | `string \| number` | `undefined` | Active tab, when you hold it yourself. See [Controlled tabs](#controlled-tabs). |
+| `onActiveTabChange` | `(tabId) => void` | `undefined` | Called with the new tab id whenever the active tab changes, in both modes. |
 | `className`        | `string`           | `undefined` | Class for the wrapper `div`.                                  |
 | `children`         | `ReactNode`        |             | Usually a `TabsList` and a `TabsPanels`.                      |
 
@@ -68,6 +70,8 @@ A `button` that activates its panel when clicked.
 
 `activeClassName` replaces `className` rather than adding to it, so repeat any shared classes in both.
 
+If you pass an `onClick`, it runs before the tab is activated. Call `event.preventDefault()` in it to keep the current tab.
+
 ### `TabsPanels`
 
 A `div` to group the panels. Takes `className` and `children`.
@@ -79,6 +83,22 @@ A `div` to group the panels. Takes `className` and `children`.
 | `tabId`     | `string \| number` |             | Id of the tab that shows this panel.     |
 | `className` | `string`           | `undefined` | Class for the panel `div`.               |
 | `children`  | `ReactNode`        |             | Panel content.                           |
+
+Every component also passes any other prop to the element it renders (`id`, `ref`, `style`, `data-*`, `aria-*`, event handlers…). `TabsTab` always renders `type="button"`, so it never submits an enclosing form.
+
+## Controlled tabs
+
+By default `Tabs` keeps the active tab in its own state, and `initialActiveTab` only sets the first one. To hold it yourself (to sync it with the URL, save it, or change it from outside `Tabs`), pass `activeTab` and update it from `onActiveTabChange`:
+
+```jsx
+const [tab, setTab] = useState("profile");
+
+<Tabs activeTab={tab} onActiveTabChange={setTab}>
+  {/* ... */}
+</Tabs>
+```
+
+In this mode `Tabs` shows whatever `activeTab` says. A click on a tab only calls `onActiveTabChange`, so if you don't update `activeTab` the tab doesn't change. Passing `activeTab={undefined}` means uncontrolled, the same as leaving it out. This follows React's [controlled and uncontrolled components](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) pattern, like `value` and `defaultValue` on an input.
 
 ## `useActiveTab`
 

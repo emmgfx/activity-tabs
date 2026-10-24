@@ -1,10 +1,9 @@
-import { ReactNode } from "react";
+import { ComponentPropsWithRef, ReactNode } from "react";
 
-export interface TabsPanelsProps {
-  className?: string;
+export interface TabsPanelsProps extends ComponentPropsWithRef<"div"> {
   children: ReactNode;
 }
 
-export const TabsPanels = ({ className, children }: TabsPanelsProps) => {
-  return <div className={className}>{children}</div>;
+export const TabsPanels = ({ children, ...props }: TabsPanelsProps) => {
+  return <div {...props}>{children}</div>;
 };

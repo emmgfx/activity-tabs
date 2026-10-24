@@ -4,6 +4,7 @@ import {
   createContext,
   useState,
   useContext,
+  ComponentPropsWithRef,
   Dispatch,
   SetStateAction,
   ReactNode,
@@ -18,22 +19,38 @@ export const TabsContext = createContext<TabsContextType | undefined>(
   undefined
 );
 
-export interface TabsProps {
+export interface TabsProps extends ComponentPropsWithRef<"div"> {
   initialActiveTab?: string | number;
-  className?: string;
+  activeTab?: string | number;
+  onActiveTabChange?: (tabId: string | number | undefined) => void;
   children: ReactNode;
 }
 
 export const Tabs: React.FC<TabsProps> = ({
   initialActiveTab,
-  className,
+  activeTab: controlledActiveTab,
+  onActiveTabChange,
   children,
+  ...props
 }) => {
-  const [activeTab, setActiveTab] = useState<string | number | undefined>(
-    initialActiveTab
-  );
+  const [internalActiveTab, setInternalActiveTab] = useState<
+    string | number | undefined
+  >(initialActiveTab);
+  // Controlled when the parent passes activeTab, uncontrolled otherwise
+  const isControlled = controlledActiveTab !== undefined;
+  const activeTab = isControlled ? controlledActiveTab : internalActiveTab;
+
+  const setActiveTab: Dispatch<SetStateAction<string | number | undefined>> = (
+    value
+  ) => {
+    const nextTab = typeof value === "function" ? value(activeTab) : value;
+    if (nextTab === activeTab) return;
+    if (!isControlled) setInternalActiveTab(nextTab);
+    onActiveTabChange?.(nextTab);
+  };
+
   return (
-    <div className={className}>
+    <div {...props}>
       <TabsContext.Provider value={{ activeTab, setActiveTab }}>
         {children}
       </TabsContext.Provider>

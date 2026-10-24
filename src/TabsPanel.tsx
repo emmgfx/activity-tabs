@@ -1,20 +1,19 @@
 "use client";
 
-import { useContext, ReactNode, Activity } from "react";
+import { useContext, ComponentPropsWithRef, ReactNode, Activity } from "react";
 
 import { TabsContext } from "./Tabs";
 
-export interface TabsPanelProps {
+export interface TabsPanelProps extends ComponentPropsWithRef<"div"> {
   tabId: string | number;
-  className?: string;
   children: ReactNode;
 }
 
-export const TabsPanel = ({ tabId, className, children }: TabsPanelProps) => {
+export const TabsPanel = ({ tabId, children, ...props }: TabsPanelProps) => {
   const { activeTab } = useContext(TabsContext)!;
   return (
     <Activity mode={activeTab === tabId ? "visible" : "hidden"}>
-      <div className={className}>{children}</div>
+      <div {...props}>{children}</div>
     </Activity>
   );
 };
