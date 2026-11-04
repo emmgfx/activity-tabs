@@ -1,5 +1,6 @@
 export const IconTSX = () => (
   <svg
+    aria-hidden="true"
     stroke="currentColor"
     fill="none"
     strokeWidth="2"

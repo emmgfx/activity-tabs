@@ -1,13 +1,7 @@
-import { Layers, Paintbrush, Code2, Shuffle } from "lucide-react";
 import { Code } from "bright";
+import { Code2, Layers, Paintbrush, Shuffle } from "lucide-react";
 
 import { CodeBlock } from "@/components/CodeBlock";
-import { Demo1, demo1code } from "@/components/Demo1";
-import { Demo2, demo2code1, demo2code2 } from "@/components/Demo2";
-import { Demo3 } from "@/components/Demo3";
-import { demo3code } from "@/components/Demo3Code";
-import { Demo4 } from "@/components/Demo4";
-import { demo4code } from "@/components/Demo4Code";
 import {
   CodeTabs,
   CodeTabsList,
@@ -15,6 +9,12 @@ import {
   CodeTabsPanels,
   CodeTabsTab,
 } from "@/components/CustomTabsCode";
+import { Demo1, demo1code } from "@/components/Demo1";
+import { Demo2, demo2code1, demo2code2 } from "@/components/Demo2";
+import { Demo3 } from "@/components/Demo3";
+import { demo3code } from "@/components/Demo3Code";
+import { Demo4 } from "@/components/Demo4";
+import { demo4code } from "@/components/Demo4Code";
 import { IconTSX } from "@/components/IconTSX";
 
 Code.theme = "material-palenight";
@@ -23,19 +23,25 @@ const divider = <div className="w-full h-px bg-(--color-border)" />;
 
 const features = [
   {
-    icon: <Layers className="w-8 h-8 text-(--color-accent)" strokeWidth={1.5} />,
+    icon: (
+      <Layers className="w-8 h-8 text-(--color-accent)" strokeWidth={1.5} />
+    ),
     title: "State preserved",
     description:
       "Panel content stays mounted and alive when switching tabs — no state reset, no re-render.",
   },
   {
-    icon: <Paintbrush className="w-8 h-8 text-(--color-accent)" strokeWidth={1.5} />,
+    icon: (
+      <Paintbrush className="w-8 h-8 text-(--color-accent)" strokeWidth={1.5} />
+    ),
     title: "Fully stylable",
     description:
       "Pass className and activeClassName to every component. Zero bundled styles.",
   },
   {
-    icon: <Shuffle className="w-8 h-8 text-(--color-accent)" strokeWidth={1.5} />,
+    icon: (
+      <Shuffle className="w-8 h-8 text-(--color-accent)" strokeWidth={1.5} />
+    ),
     title: "Headless",
     description:
       "No opinions on markup or layout. Compose tabs however your design needs.",
@@ -50,33 +56,112 @@ const features = [
 
 const propsData = {
   Tabs: [
-    { name: "initialActiveTab", type: "string | number", def: "undefined", desc: "Tab ID to activate on first render." },
-    { name: "activeTab", type: "string | number", def: "undefined", desc: "Active tab ID when you hold the state yourself (controlled)." },
-    { name: "onActiveTabChange", type: "(tabId) => void", def: "undefined", desc: "Called with the new tab ID whenever the active tab changes." },
-    { name: "className", type: "string", def: "undefined", desc: "Class applied to the wrapper div." },
-    { name: "children", type: "ReactNode", def: "—", desc: "Should contain TabsList and TabsPanels." },
-    { name: "...props", type: "div attributes", def: "—", desc: "id, ref, style, data-*, aria-*… passed to the wrapper div." },
+    {
+      name: "initialActiveTab",
+      type: "string | number",
+      def: "undefined",
+      desc: "Tab ID to activate on first render.",
+    },
+    {
+      name: "activeTab",
+      type: "string | number",
+      def: "undefined",
+      desc: "Active tab ID when you hold the state yourself (controlled).",
+    },
+    {
+      name: "onActiveTabChange",
+      type: "(tabId) => void",
+      def: "undefined",
+      desc: "Called with the new tab ID whenever the active tab changes.",
+    },
+    {
+      name: "className",
+      type: "string",
+      def: "undefined",
+      desc: "Class applied to the wrapper div.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      def: "—",
+      desc: "Should contain TabsList and TabsPanels.",
+    },
+    {
+      name: "...props",
+      type: "div attributes",
+      def: "—",
+      desc: "id, ref, style, data-*, aria-*… passed to the wrapper div.",
+    },
   ],
   TabsTab: [
-    { name: "tabId", type: "string | number", def: "—", desc: "Unique ID matching the TabsPanel to activate." },
-    { name: "className", type: "string", def: "undefined", desc: "Class applied when the tab is inactive." },
-    { name: "activeClassName", type: "string", def: "undefined", desc: "Class applied when the tab is active." },
-    { name: "onClick", type: "MouseEventHandler", def: "undefined", desc: "Runs before the tab is activated. Call event.preventDefault() to keep the current tab." },
-    { name: "children", type: "ReactNode", def: "—", desc: "Tab label content." },
-    { name: "...props", type: "button attributes", def: "—", desc: "id, ref, style, data-*, aria-*… passed to the button." },
+    {
+      name: "tabId",
+      type: "string | number",
+      def: "—",
+      desc: "Unique ID matching the TabsPanel to activate.",
+    },
+    {
+      name: "className",
+      type: "string",
+      def: "undefined",
+      desc: "Class applied when the tab is inactive.",
+    },
+    {
+      name: "activeClassName",
+      type: "string",
+      def: "undefined",
+      desc: "Class applied when the tab is active.",
+    },
+    {
+      name: "onClick",
+      type: "MouseEventHandler",
+      def: "undefined",
+      desc: "Runs before the tab is activated. Call event.preventDefault() to keep the current tab.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      def: "—",
+      desc: "Tab label content.",
+    },
+    {
+      name: "...props",
+      type: "button attributes",
+      def: "—",
+      desc: "id, ref, style, data-*, aria-*… passed to the button.",
+    },
   ],
   TabsPanel: [
-    { name: "tabId", type: "string | number", def: "—", desc: "ID of the tab that reveals this panel." },
-    { name: "className", type: "string", def: "undefined", desc: "Class applied to the panel wrapper." },
-    { name: "children", type: "ReactNode", def: "—", desc: "Panel content — stays mounted when inactive." },
-    { name: "...props", type: "div attributes", def: "—", desc: "id, ref, style, data-*, aria-*… passed to the panel div." },
+    {
+      name: "tabId",
+      type: "string | number",
+      def: "—",
+      desc: "ID of the tab that reveals this panel.",
+    },
+    {
+      name: "className",
+      type: "string",
+      def: "undefined",
+      desc: "Class applied to the panel wrapper.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      def: "—",
+      desc: "Panel content — stays mounted when inactive.",
+    },
+    {
+      name: "...props",
+      type: "div attributes",
+      def: "—",
+      desc: "id, ref, style, data-*, aria-*… passed to the panel div.",
+    },
   ],
 };
 
 export default function Page() {
   return (
     <div className="w-full max-w-281.5 mx-auto min-[1126px]:border-x min-[1126px]:border-(--color-border) min-h-screen flex flex-col text-center">
-
       {/* Hero */}
       <header className="flex flex-col items-center px-10 pt-20 pb-18 gap-5 max-sm:px-6 max-sm:pt-12 max-sm:pb-12">
         <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-(--color-border) bg-(--color-surface)">
@@ -101,7 +186,12 @@ export default function Page() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-(--color-border) text-(--color-heading) text-sm font-medium hover:bg-(--color-surface) transition-colors"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden>
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-4 h-4"
+              aria-hidden
+            >
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
             </svg>
             GitHub
@@ -112,7 +202,12 @@ export default function Page() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-(--color-border) text-(--color-heading) text-sm font-medium hover:bg-(--color-surface) transition-colors"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden>
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-4 h-4"
+              aria-hidden
+            >
               <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
             </svg>
             npm
@@ -124,9 +219,9 @@ export default function Page() {
 
       {/* Features */}
       <div className="grid grid-cols-2 lg:grid-cols-4">
-        {features.map((f, i) => (
+        {features.map((f) => (
           <div
-            key={i}
+            key={f.title}
             className="text-left px-8 py-7 border-(--color-border) max-lg:odd:border-r max-lg:nth-[-n+2]:border-b lg:border-r lg:last:border-r-0 max-sm:px-6"
           >
             <div className="mb-4">{f.icon}</div>
@@ -178,7 +273,8 @@ export default function Page() {
             Basic styling with Tailwind
           </h2>
           <p className="text-sm text-(--color-body)">
-            Switch tabs and increment the counter — switch back and the count is still there.
+            Switch tabs and increment the counter — switch back and the count is
+            still there.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]">
@@ -246,8 +342,8 @@ export default function Page() {
             </code>
           </h2>
           <p className="text-sm text-(--color-body)">
-            Use the hook in any component inside Tabs to read or set the
-            active tab, like these Prev / Next controls.
+            Use the hook in any component inside Tabs to read or set the active
+            tab, like these Prev / Next controls.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]">
@@ -296,10 +392,15 @@ export default function Page() {
         </div>
 
         {Object.entries(propsData).map(([component, rows]) => (
-          <div key={component} className="border-b border-(--color-border) last:border-b-0">
+          <div
+            key={component}
+            className="border-b border-(--color-border) last:border-b-0"
+          >
             <div className="px-10 py-5 border-b border-(--color-border) max-sm:px-6">
               <code className="text-base font-mono font-semibold text-(--color-accent)">
-                {"<"}{component}{" />"}
+                {"<"}
+                {component}
+                {" />"}
               </code>
             </div>
             <div className="overflow-x-auto px-10 max-sm:px-6">

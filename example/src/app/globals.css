@@ -23,6 +23,7 @@
 }
 
 [data-bright-theme] [data-bright-line-number] {
+  /* biome-ignore lint/complexity/noImportantStyles: overrides bright's inline style */
   border-right: none !important;
 }
 

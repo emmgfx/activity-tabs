@@ -1,12 +1,11 @@
+import { Counter } from "@/components/Counter";
 import {
   Tabs,
   TabsList,
-  TabsTab,
-  TabsPanels,
   TabsPanel,
+  TabsPanels,
+  TabsTab,
 } from "@/components/CustomTabs";
-
-import { Counter } from "@/components/Counter";
 
 export const demo2code1 = `
 <Tabs initialActiveTab="counter1">

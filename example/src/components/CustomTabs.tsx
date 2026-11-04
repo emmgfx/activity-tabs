@@ -1,9 +1,9 @@
 import {
   Tabs as RATabs,
   TabsList as RATabsList,
-  TabsTab as RATabsTab,
-  TabsPanels as RATabsPanels,
   TabsPanel as RATabsPanel,
+  TabsPanels as RATabsPanels,
+  TabsTab as RATabsTab,
 } from "@emmgfx/activity-tabs";
 
 export const Tabs = (props: React.ComponentProps<typeof RATabs>) => (

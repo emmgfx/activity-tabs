@@ -13,6 +13,7 @@ export const Counter = () => {
         count
       </span>
       <button
+        type="button"
         onClick={() => setCount(count + 1)}
         className="mt-1 px-5 py-2 rounded-lg bg-(--color-accent) text-white text-sm font-medium hover:opacity-90 transition-opacity"
       >
