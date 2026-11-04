@@ -1,9 +1,9 @@
 import {
   Tabs,
   TabsList,
-  TabsTab,
-  TabsPanels,
   TabsPanel,
+  TabsPanels,
+  TabsTab,
 } from "@emmgfx/activity-tabs";
 
 import { Counter } from "@/components/Counter";

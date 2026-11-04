@@ -3,8 +3,8 @@
 import {
   Tabs,
   TabsList,
-  TabsPanels,
   TabsPanel,
+  TabsPanels,
   useActiveTab,
 } from "@emmgfx/activity-tabs";
 
@@ -25,6 +25,7 @@ const TabButton = ({
   const isActive = activeTab === tabId;
   return (
     <button
+      type="button"
       onClick={() => setActiveTab(tabId)}
       className={`flex-1 px-4 py-3 text-sm transition-colors ${
         isActive
@@ -44,6 +45,7 @@ const ExternalControls = () => {
   return (
     <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-(--color-border)">
       <button
+        type="button"
         onClick={() => setActiveTab(tabs[currentIndex - 1].id)}
         disabled={currentIndex === 0}
         className="px-3 py-1.5 rounded-lg border border-(--color-border) text-sm text-(--color-heading) hover:bg-(--color-surface) transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
@@ -54,6 +56,7 @@ const ExternalControls = () => {
         {currentIndex + 1} / {tabs.length}
       </span>
       <button
+        type="button"
         onClick={() => setActiveTab(tabs[currentIndex + 1].id)}
         disabled={currentIndex === tabs.length - 1}
         className="px-3 py-1.5 rounded-lg border border-(--color-border) text-sm text-(--color-heading) hover:bg-(--color-surface) transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
